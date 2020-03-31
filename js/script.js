@@ -1,17 +1,17 @@
 $(document).ready(function () {
     var m = moment().format("MMM, YYYY Do");
     $(".date").text(m);
-   
+
     $("#btnSearch").on("click", function () {
         event.preventDefault();
-    
+
         var cityName = $("#search-input").val();
 
         console.log(cityName);
 
         $(".city").text(cityName + " |   ");
 
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=6db15ea629a8fe04cc16aeecc303ade4";
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=6db15ea629a8fe04cc16aeecc303ade4";
 
 
         $.ajax({
@@ -33,5 +33,5 @@ $(document).ready(function () {
             $(".icon-img img").attr("src", weatherIconSrc);
 
         });
-        });
     });
+});

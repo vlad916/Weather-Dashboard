@@ -12,5 +12,8 @@ form {
 }
 #btnSearch {
     margin-top: 10px;
+    border-radius: 5px;
+    background-color: rgb(10, 131, 133);
+    color: white;
    
 }
