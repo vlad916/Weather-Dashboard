@@ -18,12 +18,12 @@ form {
   margin-top: 10px;
   margin-bottom: 5px;
   border-radius: 5px;
-  background-color: rgb(10, 131, 133);
+  background-color: rgb(5, 92, 5);
   color: white;
 }
 #cardMain {
-    color: white;
-    background-color: rgb(8, 106, 128);
+  color: white;
+  background-color: rgb(8, 106, 128);
 }
 #cardStyle {
   margin-top: 10px;
@@ -33,4 +33,9 @@ form {
   background-color: blue;
   margin: 5px;
   width: 9rem;
+}
+#searchStored {
+  border-radius: 5px;
+  color: white;
+  background-color: blue;
 }
