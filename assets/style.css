@@ -39,3 +39,10 @@ form {
   color: white;
   background-color: blue;
 }
+.uv {
+  background-color: yellow;
+}
+.color {
+  background-color: red;
+  color: white;
+}

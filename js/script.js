@@ -27,7 +27,7 @@ dayFifth.textContent = fifthDayForecast;
 
 // Displays the current date on the header
 headerDate.textContent = showDate;
-
+// Click function to show weather data
 btnSearch.addEventListener("click", function () {
     event.preventDefault();
 
@@ -40,18 +40,20 @@ btnSearch.addEventListener("click", function () {
     var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&cnt=5&units=imperial&appid=6db15ea629a8fe04cc16aeecc303ade4";
     // URL for the City coordinates API
     var queryURLLatLng = "https://api.opencagedata.com/geocode/v1/json?q=" + cityName + "&key=" + APIKeyOpenCage;
+    // Ajax call for the City Coordinates
     $.ajax({
         url: queryURLLatLng,
         method: "GET"
     })
-        .then(function (response) {
+        .then(function (data) {
             console.log(queryURLLatLng);
-            console.log(response);
+            console.log(data);
 
-            lat = response.results[0].geometry.lat;
-            lon = response.results[0].geometry.lng;
+            lat = data.results[0].geometry.lat;
+            lon = data.results[0].geometry.lng;
             // URL for the UV
             var queryURLuV = "https://api.openweathermap.org/data/2.5/uvi?appid=6db15ea629a8fe04cc16aeecc303ade4&lat=" + lat + "&lon=" + lon;
+            // Ajax call for the UV Index
             $.ajax({
                 url: queryURLuV,
                 method: "GET"
@@ -87,10 +89,8 @@ btnSearch.addEventListener("click", function () {
         // Sets the Local Storage
         localStorage.setItem("cityStorage", cityName);
         var cityStorageSearch = localStorage.getItem("cityStorage");
-
         var searchHistory = "<button id='searchStored'>" + cityStorageSearch + "</button>";
         $(".cityList").append("<li class = 'list-group-item'>" + searchHistory + "</li>");
-
     });
 
     // Ajax call for the 5-day forecast
