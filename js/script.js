@@ -2,6 +2,9 @@
 var btnSearch = document.querySelector("#btnSearch");
 var city = document.querySelector(".city");
 var headerDate = document.querySelector(".date");
+var lat;
+var lon;
+var APIKeyOpenCage = "6a0d28f39a8041e39cbf8227e8c4bd32";
 // moment.js format
 var m = moment();
 var showDate = m.format("MM/DD/YY");
@@ -29,14 +32,36 @@ btnSearch.addEventListener("click", function () {
     event.preventDefault();
 
     var cityName = document.getElementById("search-input").value;
-
     console.log(cityName);
-
     city.textContent = cityName + " |   ";
 
     // URL's for the weather API (current and 5-day forecast)
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=6db15ea629a8fe04cc16aeecc303ade4";
     var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&cnt=5&units=imperial&appid=6db15ea629a8fe04cc16aeecc303ade4";
+    // URL for the City coordinates API
+    var queryURLLatLng = "https://api.opencagedata.com/geocode/v1/json?q=" + cityName + "&key=" + APIKeyOpenCage;
+    $.ajax({
+        url: queryURLLatLng,
+        method: "GET"
+    })
+        .then(function (response) {
+            console.log(queryURLLatLng);
+            console.log(response);
+
+            lat = response.results[0].geometry.lat;
+            lon = response.results[0].geometry.lng;
+            // URL for the UV
+            var queryURLuV = "https://api.openweathermap.org/data/2.5/uvi?appid=6db15ea629a8fe04cc16aeecc303ade4&lat=" + lat + "&lon=" + lon;
+            $.ajax({
+                url: queryURLuV,
+                method: "GET"
+            }).then(function (data) {
+                console.log(queryURLuV);
+                console.log(data);
+                var index = document.querySelector(".uvIndex");
+                index.textContent = "UV Index: " + data.value;
+            });
+        });
 
     // Ajax call for the current weather
     $.ajax({
@@ -78,12 +103,8 @@ btnSearch.addEventListener("click", function () {
         // First Day Forecast
         var temp = document.querySelector(".temp1");
         temp.textContent = "Temperature: " + data.list[0].main.temp + " ˚F";
-        var wind = document.querySelector(".windSpeed1");
-        wind.textContent = "Wind Speed: " + data.list[0].wind.speed + " MPH";
         var hum = document.querySelector(".humidity1");
         hum.textContent = "Humidity: " + data.list[0].main.humidity + "%";
-        var weather = document.querySelector(".weatherCondition1");
-        weather.textContent = "Weather: " + data.list[0].weather[0].main;
         // Shows the weather icon on the current day
         var icon = document.querySelector(".icon1");
         var weatherIconSrc1 = "https://openweathermap.org/img/wn/" + data.list[0].weather[0].icon + ".png";
@@ -93,12 +114,8 @@ btnSearch.addEventListener("click", function () {
         // Second Day Forecast
         var temp = document.querySelector(".temp2");
         temp.textContent = "Temperature: " + data.list[1].main.temp + " ˚F";
-        var wind = document.querySelector(".windSpeed2");
-        wind.textContent = "Wind Speed: " + data.list[1].wind.speed + " MPH";
         var hum = document.querySelector(".humidity2");
         hum.textContent = "Humidity: " + data.list[1].main.humidity + "%";
-        var weather = document.querySelector(".weatherCondition2");
-        weather.textContent = "Weather: " + data.list[1].weather[0].main;
         // Shows the weather icon on the current day
         var icon = document.querySelector(".icon2");
         var weatherIconSrc2 = "https://openweathermap.org/img/wn/" + data.list[1].weather[0].icon + ".png";
@@ -108,12 +125,8 @@ btnSearch.addEventListener("click", function () {
         // Third Day Forecast
         var temp = document.querySelector(".temp3");
         temp.textContent = "Temperature: " + data.list[2].main.temp + " ˚F";
-        var wind = document.querySelector(".windSpeed3");
-        wind.textContent = "Wind Speed: " + data.list[2].wind.speed + " MPH";
         var hum = document.querySelector(".humidity3");
         hum.textContent = "Humidity: " + data.list[2].main.humidity + "%";
-        var weather = document.querySelector(".weatherCondition3");
-        weather.textContent = "Weather: " + data.list[2].weather[0].main;
         // Shows the weather icon on the current day
         var icon = document.querySelector(".icon3");
         var weatherIconSrc3 = "https://openweathermap.org/img/wn/" + data.list[2].weather[0].icon + ".png";
@@ -123,12 +136,8 @@ btnSearch.addEventListener("click", function () {
         // Fourth Day Forecast
         var temp = document.querySelector(".temp4");
         temp.textContent = "Temperature: " + data.list[3].main.temp + " ˚F";
-        var wind = document.querySelector(".windSpeed4");
-        wind.textContent = "Wind Speed: " + data.list[3].wind.speed + " MPH";
         var hum = document.querySelector(".humidity4");
         hum.textContent = "Humidity: " + data.list[3].main.humidity + "%";
-        var weather = document.querySelector(".weatherCondition4");
-        weather.textContent = "Weather: " + data.list[3].weather[0].main;
         // Shows the weather icon on the current day
         var icon = document.querySelector(".icon4");
         var weatherIconSrc4 = "https://openweathermap.org/img/wn/" + data.list[3].weather[0].icon + ".png";
@@ -138,12 +147,8 @@ btnSearch.addEventListener("click", function () {
         // Fifth Day Forecast
         var temp = document.querySelector(".temp5");
         temp.textContent = "Temperature: " + data.list[4].main.temp + " ˚F";
-        var wind = document.querySelector(".windSpeed5");
-        wind.textContent = "Wind Speed: " + data.list[4].wind.speed + " MPH";
         var hum = document.querySelector(".humidity5");
         hum.textContent = "Humidity: " + data.list[4].main.humidity + "%";
-        var weather = document.querySelector(".weatherCondition5");
-        weather.textContent = "Weather: " + data.list[4].weather[0].main;
         // Shows the weather icon on the current day
         var icon = document.querySelector(".icon5");
         var weatherIconSrc5 = "https://openweathermap.org/img/wn/" + data.list[4].weather[0].icon + ".png";
