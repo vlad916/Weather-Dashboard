@@ -102,7 +102,7 @@ btnSearch.addEventListener("click", function () {
         console.log(data);
         // First Day Forecast
         var temp = document.querySelector(".temp1");
-        temp.textContent = "Temperature: " + data.list[0].main.temp + " ˚F";
+        temp.textContent = "Temp: " + data.list[0].main.temp + " ˚F";
         var hum = document.querySelector(".humidity1");
         hum.textContent = "Humidity: " + data.list[0].main.humidity + "%";
         // Shows the weather icon on the current day
@@ -113,7 +113,7 @@ btnSearch.addEventListener("click", function () {
         icon.appendChild(weatherImage1);
         // Second Day Forecast
         var temp = document.querySelector(".temp2");
-        temp.textContent = "Temperature: " + data.list[1].main.temp + " ˚F";
+        temp.textContent = "Temp: " + data.list[1].main.temp + " ˚F";
         var hum = document.querySelector(".humidity2");
         hum.textContent = "Humidity: " + data.list[1].main.humidity + "%";
         // Shows the weather icon on the current day
@@ -124,7 +124,7 @@ btnSearch.addEventListener("click", function () {
         icon.appendChild(weatherImage2);
         // Third Day Forecast
         var temp = document.querySelector(".temp3");
-        temp.textContent = "Temperature: " + data.list[2].main.temp + " ˚F";
+        temp.textContent = "Temp: " + data.list[2].main.temp + " ˚F";
         var hum = document.querySelector(".humidity3");
         hum.textContent = "Humidity: " + data.list[2].main.humidity + "%";
         // Shows the weather icon on the current day
@@ -135,7 +135,7 @@ btnSearch.addEventListener("click", function () {
         icon.appendChild(weatherImage3);
         // Fourth Day Forecast
         var temp = document.querySelector(".temp4");
-        temp.textContent = "Temperature: " + data.list[3].main.temp + " ˚F";
+        temp.textContent = "Temp: " + data.list[3].main.temp + " ˚F";
         var hum = document.querySelector(".humidity4");
         hum.textContent = "Humidity: " + data.list[3].main.humidity + "%";
         // Shows the weather icon on the current day
@@ -146,7 +146,7 @@ btnSearch.addEventListener("click", function () {
         icon.appendChild(weatherImage4);
         // Fifth Day Forecast
         var temp = document.querySelector(".temp5");
-        temp.textContent = "Temperature: " + data.list[4].main.temp + " ˚F";
+        temp.textContent = "Temp: " + data.list[4].main.temp + " ˚F";
         var hum = document.querySelector(".humidity5");
         hum.textContent = "Humidity: " + data.list[4].main.humidity + "%";
         // Shows the weather icon on the current day
