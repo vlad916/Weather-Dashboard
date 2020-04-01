@@ -11,5 +11,5 @@ This app will show the user the current date, and other corresponding weather da
 * Weather Condition
 * 5 - day Forecast 
 
-Link for the deployed application: 
+Link for the deployed application: https://vlad916.github.io/Weather-Dashboard/
 
