@@ -12,6 +12,15 @@ $(document).ready(function () {
     var secondDayForecast = m.add(1, "days").format("MM/DD/YY");
     var daySecond = document.querySelector(".daySecond");
     daySecond.textContent = secondDayForecast;
+    var thirdDayForecast = m.add(1, "days").format("MM/DD/YY");
+    var dayThird = document.querySelector(".dayThird");
+    dayThird.textContent = thirdDayForecast;
+    var fourthDayForecast = m.add(1, "days").format("MM/DD/YY");
+    var dayFourth = document.querySelector(".dayFourth");
+    dayFourth.textContent = fourthDayForecast;
+    var fifthDayForecast = m.add(1, "days").format("MM/DD/YY");
+    var dayFifth = document.querySelector(".dayFifth");
+    dayFifth.textContent = fifthDayForecast;
 
 
     headerDate.textContent = showDate;
