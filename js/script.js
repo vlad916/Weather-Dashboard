@@ -1,17 +1,32 @@
 $(document).ready(function () {
-    var m = moment().format("MMM, YYYY Do");
-    $(".date").text(m);
 
-    $("#btnSearch").on("click", function () {
+    var btnSearch = document.querySelector("#btnSearch");
+    var city = document.querySelector(".city");
+    var headerDate = document.querySelector(".date");
+    var m = moment();
+    var showDate = m.format("MM/DD/YY");
+
+    var firstDayForecast = m.add(1, "day").format("MM/DD/YY");
+    var dayFirst = document.querySelector(".dayFirst");
+    dayFirst.textContent = firstDayForecast;
+    var secondDayForecast = m.add(1, "days").format("MM/DD/YY");
+    var daySecond = document.querySelector(".daySecond");
+    daySecond.textContent = secondDayForecast;
+
+
+    headerDate.textContent = showDate;
+
+    btnSearch.addEventListener("click", function () {
         event.preventDefault();
 
-        var cityName = $("#search-input").val();
+        var cityName = document.getElementById("search-input").value;
 
         console.log(cityName);
 
-        $(".city").text(cityName + " |   ");
+        city.textContent = cityName + " |   ";
 
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=6db15ea629a8fe04cc16aeecc303ade4";
+
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=6db15ea629a8fe04cc16aeecc303ade4";
 
 
         $.ajax({
@@ -20,18 +35,25 @@ $(document).ready(function () {
         }).then(function (data) {
             console.log(data);
 
-            $(".temp").text("Temperature: " + data.main.temp + " ˚F");
-            $(".windSpeed").text("Wind Speed: " + data.wind.speed);
-            $(".humidity").text("Humidity: " + data.main.humidity);
-            $(".weatherCondition").text("Weather: " + data.weather[0].main);
+            var temp = document.querySelector(".temp");
+            temp.textContent = "Temperature: " + data.main.temp + " ˚F";
+            var wind = document.querySelector(".windSpeed");
+            wind.textContent = "Wind Speed: " + data.wind.speed + " MPH";
+            var hum = document.querySelector(".humidity");
+            hum.textContent = "Humidity: " + data.main.humidity + "%";
+            var weather = document.querySelector(".weatherCondition");
+            weather.textContent = "Weather: " + data.weather[0].main;
 
-            var iconImg = data.weather[0].icon;
-            var weatherIconSrc = "http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png";
-            var weatherImage = $("<img>");
-            weatherImage.attr("src", weatherIconSrc);
-            $(".icon").append(weatherImage);
-            $(".icon-img img").attr("src", weatherIconSrc);
+            var icon = document.querySelector('.icon');
+            var weatherIconSrc = "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png";
+            var weatherImage = document.createElement('img');
+            weatherImage.setAttribute('src', weatherIconSrc);
+            icon.appendChild(weatherImage);
+
+
 
         });
     });
 });
+
+
