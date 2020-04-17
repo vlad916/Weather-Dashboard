@@ -1,5 +1,7 @@
 # Weather-Dashboard
 
+Link for the deployed application: https://vlad916.github.io/Weather-Dashboard/
+
 This is an app which is designed to retrieve and display the weather data using 
 weather api https://openweathermap.org/current. 
 
@@ -11,5 +13,5 @@ This app will show the user the current date, and other corresponding weather da
 * Weather Condition
 * 5 - day Forecast 
 
-Link for the deployed application: https://vlad916.github.io/Weather-Dashboard/
+<img src="images/weather.png" text-align="center">
 
