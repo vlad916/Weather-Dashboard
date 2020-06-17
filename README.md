@@ -1,6 +1,6 @@
 # Weather-Dashboard
 
-Link for the deployed application: https://vlad916.github.io/Weather-Dashboard/
+Link for the deployed application: https://vlad916.github.io/weather-dashboard/
 
 This is an app which is designed to retrieve and display the weather data using 
 weather api https://openweathermap.org/current. 
